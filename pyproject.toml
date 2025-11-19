@@ -1,0 +1,17 @@
+[project]
+name = "virion"
+version = "0.1.0"
+description = "Virion autonomy stack"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "torch",
+  "opencv-python",
+]
+
+[project.optional-dependencies]
+planning = ["networkx"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
