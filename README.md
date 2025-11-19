@@ -32,3 +32,19 @@ can be rehearsed in software before hardware arrives.
 
 These resources collectively ensure the Virion software stack is complete, testable,
 and simulable today, yet grounded in realistic educational hardware constraints.
+
+## Source layout
+
+The `src/virion` package now mirrors the documentation and includes executable
+scaffolds for every major subsystem:
+
+- `ai/curiosity`: GAN-based novelty model plus PPO-style agent wrappers.
+- `ai/slam`: visual-inertial SLAM pipeline built on ORB features.
+- `ai/detection`: Tiny YOLO-like detector sized for the laptop companion.
+- `ai/planning`: grid planner compatible with A*/D* workflows.
+- `control`: PID loop utilities matching the ESP32 real-time budget.
+- `sensors`, `simulation`, and `data`: drivers, ROS 2 bridge helpers, and
+  dataset logging shims so sensor data can stream into training code.
+
+Each module is lightweight enough to run on commodity hardware today yet exposes
+clean interfaces for swapping in firmware-specific implementations later.
