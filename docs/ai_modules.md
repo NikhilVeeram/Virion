@@ -26,9 +26,10 @@ implemented and tested independently.
 ## Curiosity engine (GAN + RL)
 
 1. **GAN architecture**
-   - Generator: ResNet18 encoder → ConvLSTM bottleneck → transposed-conv decoder.
-   - Discriminator: Lightweight PatchGAN to evaluate realism.
-   - Losses: L1 reconstruction + adversarial + perceptual.
+   - Generator: ResNet18 encoder → ConvLSTM bottleneck → transposed-conv decoder with optional spectral normalization for stability.
+   - Discriminator: PatchGAN with spectral normalization, minibatch standard deviation, and feature-matching loss to curb mode collapse.
+   - Losses: L1 reconstruction + adversarial + perceptual + feature matching; gradient penalty active by default.
+   - Data: Paired semantic masks → heightmaps (e.g., MSPaint-to-terrain style inputs) plus underwater sensor frames from Gazebo bags.
 2. **Reward shaping**
    - Curiosity reward = λ₁ * |observation − prediction| + λ₂ * PID residual magnitude.
    - Penalize redundant revisits using intrinsic count-based bonus.

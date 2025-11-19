@@ -13,6 +13,7 @@ and later transferred to affordable student hardware.
 | `docs/simulation.md` | Step-by-step workflow for simulating every subsystem with open tools. |
 | `docs/ai_modules.md` | SLAM, curiosity engine, detection, and planning specifications. |
 | `docs/data_collection.md` | Dataset requirements, capture plans, and logging schemas. |
+| `docs/runbook.md` | Start-to-finish commands for installing, simulating, and training the stack. |
 
 The documentation is intentionally actionable: each section calls out concrete tools,
 configurations, and validation steps so the entire stack is “implementation ready” and
@@ -25,9 +26,11 @@ can be rehearsed in software before hardware arrives.
    the PID + PWM loop.
 2. **Follow `docs/simulation.md`.** Use ROS 2 Humble, Gazebo, micro-ROS, Verilator,
    and PyTorch-based AI notebooks to exercise each module in isolation and together.
-3. **Implement AI + autonomy per `docs/ai_modules.md`.** Models are sized to fit
+3. **Use `docs/runbook.md`.** Run the end-to-end commands (install → simulate → train)
+   to validate your setup and rehearse deployment.
+4. **Implement AI + autonomy per `docs/ai_modules.md`.** Models are sized to fit
    within a 32 GB VRAM budget on an Apple Silicon M2 Max MacBook Pro.
-4. **Use `docs/data_collection.md`** to plan field logging, synthetic data creation,
+5. **Use `docs/data_collection.md`** to plan field logging, synthetic data creation,
    and dataset packaging for downstream training.
 
 These resources collectively ensure the Virion software stack is complete, testable,
